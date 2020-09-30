@@ -226,7 +226,7 @@ function areaTalk(fontTalking, colorTalkingBg, colorTalkingName, colorTalkinStat
 					qS(talker.linkBoxBgTitleClass)
 						.style.backgroundColor = talker.linkBoxBgTitleColor	
 				}
-			})	
+			})
 		}
 
 		function setBgTalkerImg(){
@@ -267,10 +267,16 @@ function areaTalk(fontTalking, colorTalkingBg, colorTalkingName, colorTalkinStat
 		talker.inputMsgArea = setInputMsgArea
 		talker.linkBoxBg = setlinkBoxBg
 
-		function talkerRend(){
-			talker.systemFont()
+		function talkerMsgsLayout(){
 			talker.sendedMsgs()
 			talker.receivedMsgs()
+		}
+
+		talker.msgsLayouts = talkerMsgsLayout
+
+		function talkerRend(){
+			talker.systemFont()
+			talker.msgsLayouts()
 			talker.contactTalkingName()
 			talker.contactTalkingStatus()
 			talker.contactTalkingBg()
@@ -318,10 +324,17 @@ function setTheme(color1, colorContacts1, colorContacts2, colorContactsBg, color
 		theme.header.render()
 		theme.contacts.render()
 
-		qA('.eJ0yJ').forEach(e => e.addEventListener('click', theme.talker.render))
-		
+		qA('.eJ0yJ').forEach(e => e.addEventListener('click', () => {
+			
+			theme.talker.render()
+
+			qS('._2-aNW').addEventListener('scroll', () => {
+				
+				theme.talker.msgsLayouts()
+			})
+		}))		
 	}
-	
+
 	theme.render = themeRend
 
 	return theme.render()

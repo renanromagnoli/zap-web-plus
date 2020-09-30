@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
-	"name": "ZapTheme",
-	"description": "Extensão para personalizar o Whastapp Web",
+	"name": "zapWebPlus",
+	"description": "Extensão para personalizar temas do Whastapp Web e acrescentar funcionalidades",
 	"version": "0.1",
 	"icons": {
 		"128": "128.png"
