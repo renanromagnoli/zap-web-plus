@@ -219,14 +219,12 @@ function areaTalk(fontTalking, colorTalkingBg, colorTalkingName, colorTalkinStat
 		}
 
 		function setlinkBoxBg(){
-			document.addEventListener('scroll', () => {
-				if(talker.linkBoxBgImgClass){
+				if(qS(talker.linkBoxBgImgClass) != null){
 					qS(talker.linkBoxBgImgClass)
 						.style.backgroundColor = talker.linkBoxBgImgColor
 					qS(talker.linkBoxBgTitleClass)
 						.style.backgroundColor = talker.linkBoxBgTitleColor	
 				}
-			})
 		}
 
 		function setBgTalkerImg(){
@@ -324,15 +322,23 @@ function setTheme(color1, colorContacts1, colorContacts2, colorContactsBg, color
 		theme.header.render()
 		theme.contacts.render()
 
-		qA('.eJ0yJ').forEach(e => e.addEventListener('click', () => {
+		qA('.eJ0yJ').forEach(e => e.addEventListener('click', async () => {
 			
-			theme.talker.render()
+			await theme.talker.render()
 
 			qS('._2-aNW').addEventListener('scroll', () => {
 				
 				theme.talker.msgsLayouts()
+
+				if(qS(theme.talker.linkBoxBgImgClass) != null){
+					qS(theme.talker.linkBoxBgImgClass)
+						.style.backgroundColor = theme.talker.linkBoxBgImgColor
+					qS(theme.talker.linkBoxBgTitleClass)
+						.style.backgroundColor = theme.talker.linkBoxBgTitleColor	
+					}
+				})
 			})
-		}))		
+		)		
 	}
 
 	theme.render = themeRend
